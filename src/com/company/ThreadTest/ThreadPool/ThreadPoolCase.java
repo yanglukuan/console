@@ -1,4 +1,4 @@
-package com.company.ThreadPool;
+package com.company.ThreadTest.ThreadPool;
 
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
