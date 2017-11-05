@@ -1,6 +1,7 @@
 package com.company.ThreadTest.thread;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Created by lukuanpc on 2017/10/29.
@@ -30,5 +31,6 @@ public class ArrayListTest {
         t1.join();
         t2.join();
         System.out.print(al.size());
+
     }
 }
