@@ -30,6 +30,7 @@ public class AtomicTest {
         t1.join();
         t2.join();
         System.out.println("al:"+al +"val:"+val);
+        System.out.print(Runtime.getRuntime().availableProcessors());
     }
 
 }
