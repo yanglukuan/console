@@ -11,14 +11,17 @@ public class AtomicTest {
     static AtomicTest.Add add=new AtomicTest.Add();
     public static class Add implements Runnable{
 
+
         @Override
         public void run()
         {
+            ThreadLocal th=new ThreadLocal();//测试ThreadLocal
+            th.set(al);
             for (int i=0;i<1000;i++) {
                 al.getAndIncrement();//正常并发
                 val++;//异常并发
-
             }
+            System.out.println(th.get()+Thread.currentThread().getName());//输出每个线程的ThreadLocal保存的值
         }
     }
 
@@ -30,7 +33,7 @@ public class AtomicTest {
         t1.join();
         t2.join();
         System.out.println("al:"+al +"val:"+val);
-        System.out.print(Runtime.getRuntime().availableProcessors());
+        System.out.print(Runtime.getRuntime().availableProcessors());//输出cpu核心数
     }
 
 }
