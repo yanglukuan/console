@@ -1,5 +1,7 @@
 package com.company.ThreadTest.thread;
 
+import java.util.concurrent.locks.ReentrantReadWriteLock;
+
 /**
  * Created by lukuanpc on 2017/10/29.
  */
@@ -45,5 +47,7 @@ public class ThreadTest {
         new Thread(new Cht(111l)).start();
         new Thread(new Cht(121l)).start();
         new Thread(new ThreadTest.re()).start();
+
+//        ReentrantReadWriteLock.WriteLock
     }
 }

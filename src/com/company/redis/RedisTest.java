@@ -7,6 +7,8 @@ import redis.clients.jedis.Jedis;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * Created by yanglk on 2017/11/10.
@@ -49,8 +51,8 @@ public class RedisTest {
         System.out.println("设置key10秒钟过期，已过期："+read.get("test"));
 
 
+        //存放复杂对象
         PersonModel model =new PersonModel();
-
         List<PersonModel> models=new ArrayList<>();
 
         model.setId(1);
@@ -64,11 +66,12 @@ public class RedisTest {
 
         read.set("person",strPerson);
 
+
         System.out.println(read.get("person"));
 
 
 
-
     }
+
 
 }
