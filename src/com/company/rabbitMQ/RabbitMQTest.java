@@ -12,7 +12,7 @@ import java.util.concurrent.TimeoutException;
  */
 public class RabbitMQTest {
 
-    public static void main(String[] args) throws IOException, TimeoutException {
+    public static void main(String[] args) throws IOException, TimeoutException, InterruptedException {
         ConnectionFactory factory = new ConnectionFactory();
         factory.setHost("127.0.0.1");
 
@@ -22,7 +22,10 @@ public class RabbitMQTest {
 
         channel.queueDeclare("Hello",false,false,false,null);
 
-        channel.basicPublish("","Hello",null,"Hello world".getBytes());
+        for(int i=0;i<100;i++) {
+            channel.basicPublish("", "Hello", null, ("Hello world"+i).getBytes());
+            Thread.sleep(100);
+        }
 
         System.out.println("message send");
 
