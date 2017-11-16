@@ -54,13 +54,15 @@ public class ThreadPoolCase {
 
     public void execute(Runnable runnable)
     {
-//        if (workQueue.size() > 4)
-//        {
+       if (workQueue.size() > 4)
+       {
 
             System.out.println("当前等待线程大小：'"+runnable.getClass().getSimpleName()+
                     "':"+workQueue.size());
-        //}
+        }
         executor.execute(runnable);
+
+
     }
 
 
@@ -90,17 +92,17 @@ public class ThreadPoolCase {
 
          ThreadPoolCase tp;
 
-        int workQueneSize = 80;
-        int coreSize = 2;
+        int workQueneSize = 5;
+        int coreSize = 5;
         int maxSize = 10;
         //创建线程池
             tp = new ThreadPoolCase(workQueneSize, coreSize, maxSize,
                     ThreadPoolCase.ARRAY_QUEUE);
 
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 15; i++)
         {
 
-            tp.execute(new Task("num:" + i));
+            tp.execute(new Task("num:" + (i+1)));
         }
 
 
@@ -117,11 +119,11 @@ public class ThreadPoolCase {
         public void run()
         {
             // 处理一个任务，这里的处理方式太简单了，仅仅是一个打印语句
-            System.out.println("start .." + name);
+            System.out.println("start .." + name+Thread.currentThread().getName());
             try
             {
                 // 便于观察，等待一段时间
-                Thread.sleep(2000);
+                Thread.sleep(5000);
             } catch (Exception e)
             {
                 e.printStackTrace();
