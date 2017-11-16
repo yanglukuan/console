@@ -22,6 +22,7 @@ public class RabbitMQTest {
 
         channel.queueDeclare("Hello",false,false,false,null);
 
+
         for(int i=0;i<100;i++) {
             channel.basicPublish("", "Hello", null, ("Hello world"+i).getBytes());
             Thread.sleep(100);
