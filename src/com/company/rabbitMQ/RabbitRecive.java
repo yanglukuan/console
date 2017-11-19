@@ -31,7 +31,7 @@ public class RabbitRecive {
 
         channel.basicConsume("Hello",true,consumer);
 
-        
+
 
         while (true){
 
